@@ -5,25 +5,25 @@ import java.text.DecimalFormat;
 public class AdvGame {
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
-        DecimalFormat df = new DecimalFormat("#.###");
-        double time = 5.0;
-        boolean isRunning = true;
-        boolean isGameRunning = true;
-        boolean inRoom1 = false;
-        boolean hasPuzzle = false;
-        boolean donePuzzle = false;
+        DecimalFormat df = new DecimalFormat("#.###"); // Rounds decimal (cuz double sucks)
+        double time = 5.0; // setting time
+        boolean isRunning = true; // to see if program ends or not
+        boolean isGameRunning = true; // to see if game ends or not (if game ends, then they can rerun)
+        boolean inRoom1 = false; // either lobby or room 1
+        boolean hasPuzzle = false; // to check if he has puzzle
+        boolean donePuzzle = false; // to check if he has finished puzzle
 
 
-        while (isGameRunning || isRunning) {
-            isRunning = TimeCheck.checkTime(time);
-            if (!isRunning) {
+        while (isGameRunning || isRunning) { // to see if the program ended or if the game ended
+            isRunning = TimeCheck.checkTime(time); // checks time if it's decimal
+            if (!isRunning) { // dies
                 break;
             }
             System.out.println("> You accepted a stupid dare where you bet that you're able to escape the escape room within 5 minutes...");
             System.out.println("Note: Every action can either take 0.4 time OR all 5 :). Choose carefully!");
             System.out.println("# Choices: \n> 1) look around \n> 2) strategize \n> 3) panik! \n> (Q to quit)\n> Time: " + df.format(time));
             String input = sc.nextLine();
-            if (input.equals("Q")){
+            if (input.equals("Q")){ // gets input and does room, like for every room...
                 isGameRunning = false;
                 return;
             }
@@ -83,7 +83,7 @@ public class AdvGame {
                                 hasPuzzle = true;
                             }
                             else{
-                                System.out.println("> You already have 1 bruh \n> Time: " +df.format);
+                                System.out.println("> You already have 1 bruh \n> Time: " +df.format(time));
                             }
                         }
                         else if (input.equals("2")){
@@ -114,6 +114,7 @@ public class AdvGame {
         }
         if (!isRunning){
             System.out.println("Bad");
+            sc.close();
         }
     }
 }
